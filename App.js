@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Navigation from './src/Navigation/Navigation';
+import { useFonts } from 'expo-font';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded] = useFonts({
+    Marcellus: require('./src/assets/Fonts/Marcellus-Regular.ttf')
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return  <Navigation />;
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 2,
+    backgroundColor: '#FAF0E6',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    marginBottom: 20,
+},
+button: {
+  paddingTop:40
+}
+  
 });
