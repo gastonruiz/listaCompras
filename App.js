@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import Navigation from './src/Navigation/Navigation';
 import { useFonts } from 'expo-font';
-
+import BottomTabNavigator from './src/Navigation/BottomTabNavigator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -11,7 +11,7 @@ export default function App() {
     return null;
   }
 
-  return  <Navigation />;
+  return  <BottomTabNavigator/>;
 }
 
 const styles = StyleSheet.create({

@@ -1,28 +1,35 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+
 import React from 'react'
+import GridItem from '../components/GridItem'
+import { FlatList } from 'react-native-web';
+import {categories} from '../data/categories';
 
 const DoList = ({navigation}) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>DoList</Text>
-      <Button title='Generar lista' onPress={()=>{navigation.navigate('List')}}/>
-    </View>
+  
+
+  const handSelectedCategory = (item) => {
+    navigation.navigate('List', {
+      categoryID: item.id,
+      name: item.title,
+      
+    })
+  }
+
+  const renderGridItem = ({ item }) => (
+    <GridItem item={ item }
+    onSelected= {handSelectedCategory}
+    />
   )
-}
+
+  return (
+    <FlatList 
+    data={categories}
+    keyExtractor= {(item)=> item.id}
+    renderItem={renderGridItem}
+    numColumns= {2}
+    />
+  );
+};
 
 export default DoList
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    backgroundColor: '#FAF0E6',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  title: {
-    fontFamily: 'Marcellus',
-    marginBottom: 70,
-
-    
-  }
-})

@@ -1,16 +1,15 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Categories from '../Screens/Categories'
-import DoList from '../Screens/DoList'
-import List from '../Screens/List'
 import { COLORS } from '../constants/colors'
+import ShopScreen from '../Screens/ShopScreen';
+
 
 const Stack = createNativeStackNavigator();
 
-  const Navigation = () => {
+  const CartNav = () => {
     return(
-        
+       
             <Stack.Navigator
             initialRouteName='Categories'
             screenOptions={{
@@ -21,14 +20,14 @@ const Stack = createNativeStackNavigator();
                 }
             }}
             >
-                <Stack.Screen name="Categories" component={Categories} options={{
-                    title: 'Haz tu lista',
-                }} />
-                <Stack.Screen name="Agrega Items" component={DoList}
-                 />
-                <Stack.Screen name="List" component={List} />
+             <Stack.Screen  
+             name= "Cart"
+             component={ShopScreen}
+             options={{ title: "Shop" }}
+             />
+             
             </Stack.Navigator>
         
     )
 }
-export default Navigation
+export default CartNav
